@@ -23,15 +23,15 @@
 
     <mat-sidenav-content>
         <mat-toolbar color="primary" *ngIf="filmNavbar">
-            
+
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
                 *ngIf="isHandset$ | async">
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
 
             <span routerLink="/" (click)="navbarService.sendNext('main',true)"
-                class="aligndown abcd"><mat-icon>home</mat-icon>Module
-                leaves</span>
+                class="aligndown abcd"><mat-icon>home</mat-icon>Film
+            </span>
             <span class="fillSpace"></span>
             <span *ngIf="!(isHandset$ | async)" class="buttons">
 

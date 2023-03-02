@@ -1,39 +1,39 @@
 <div class="topnav">
     <mat-sidenav-container class="sidenav-container">
 
-        <!-- <mat-sidenav #drawer [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="isHandset$ | async" class="sidenav">
+        <mat-sidenav #drawer [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="isHandset$ | async" class="sidenav">
             <mat-toolbar>Menu</mat-toolbar>
             <mat-nav-list>
                 <span class="aligndown1"> </span>
-                <a (click)="drawer.toggle(); navbarService.sendNext('main', true)" mat-list-item routerLink="libreria" routerLinkActive="active">
+                <a (click)="drawer.toggle(); navbarService.sendNext('main', false)" mat-list-item routerLink="libreria" routerLinkActive="active">
                     <mat-icon class="aligndownMenu">group</mat-icon>
-                    libreria
+                    Libreria
                 </a>
-                <a (click)="drawer.toggle(); navbarService.sendNext('main', false)" mat-list-item routerLink="leaves" routerLinkActive="active">
+                <a (click)="drawer.toggle(); navbarService.sendNext('main', false)" mat-list-item routerLink="film" routerLinkActive="active">
                     <mat-icon class="aligndownMenu">group</mat-icon>
-                    leaves
+                    Film
                 </a>
             </mat-nav-list>
-        </mat-sidenav> -->
+        </mat-sidenav>
 
         <mat-sidenav-content>
             <mat-toolbar *ngIf="mainBar" color="primary">
-                <!-- <button *ngIf="isHandset$ | async" (click)="drawer.toggle()" type="button" aria-label="Toggle sidenav" mat-icon-button>
+                <button *ngIf="isHandset$ | async" (click)="drawer.toggle()" type="button" aria-label="Toggle sidenav" mat-icon-button>
                     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-                </button> -->
+                </button>
                 <span routerLink="/" class="aligndown abcd">
                     <mat-icon>home</mat-icon>
-                    Esempio moduli con sottomoduli
+                    Bibblioteca
                 </span>
                 <span class="fillSpace"></span>
 
                 <span *ngIf="!(isHandset$ | async)" class="buttons">
                     <button (click)="navbarService.sendNext('main', false)" mat-raised-button routerLink="libreria" color="primary" class="button">
-                        libreria
+                        Libreria
                     </button>
                     <button mat-raised-button routerLink="film" color="primary" class="button"
                         (click)="navbarService.sendNext('main', false)">
-                        film
+                        Film
                     </button>
                 </span>
             </mat-toolbar>
