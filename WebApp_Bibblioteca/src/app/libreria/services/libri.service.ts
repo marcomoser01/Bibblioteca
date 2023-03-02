@@ -12,6 +12,9 @@ export class LibriService {
   setLibro(libro: Libro) {
     this.libro = libro;
   }
+  resetLibro() {
+    this.libro.id = -1;
+  }
 
   constructor(private http:HttpClient) {
     this.libro.id = -1;

@@ -37,7 +37,7 @@ public class Film {
     String durata;
 
     @Column(name = "oscar")
-    String number;
+    String oscar;
 
     @Column(name = "prenotato", nullable = false)
     Boolean prenotato;

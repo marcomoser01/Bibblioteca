@@ -12,6 +12,8 @@ const listMsg = {
   titolorequired: "Il titolo è richiesto.",
   titolominlength: "Il titolo deve deve avere almeno 4 caratteri",
   autorerequired: "Il campo autore è obbligatorio.",
+  duratarequired: "Il campo durata è obbligatorio.",
+  oscarrequired: "Il campo oscar è obbligatorio.",
   prezzorequired: "Il prezzo di  deve essere inserito > 0.",
   prezzomin: "Deve essere maggiore di 0",
   prezzonan: "Il prezzo deve essere un valore >0"
@@ -34,20 +36,17 @@ export class FilmAddComponent implements OnInit {
   constructor(public datiService: FilmService, public fb: FormBuilder, private router: Router) {
     this.filmfrm = fb.group(new Film());
     if(datiService.film.id != -1) {
-      this.film = datiService.film;
+      this.film = {
+        id: datiService.film.id,
+        titolo: datiService.film.titolo,
+        autore: datiService.film.autore,
+        prezzo: datiService.film.prezzo,
+        prenotato: datiService.film.prenotato,
+        durata: datiService.film.durata,
+        oscar: datiService.film.oscar
+      }
+      datiService.resetFilm();
     }
-  }
-
-  numberValidator(control: FormControl) {
-    if (isNaN(control?.value))
-      return {
-        nan: true
-      }
-    if ((1 * control?.value) <= 0)
-      return {
-        min: true
-      }
-    return null;
   }
 
   ngOnInit(): void {
@@ -55,8 +54,9 @@ export class FilmAddComponent implements OnInit {
       id: [this.film.id],
       'titolo': new FormControl(this.film.titolo, [Validators.required, Validators.minLength(4)]),
       'autore': new FormControl(this.film.autore, [Validators.required]),
+      'durata': new FormControl(this.film.durata, [Validators.required]),
+      'oscar': new FormControl(this.film.oscar, [Validators.required]),
       'prezzo': new FormControl(this.film.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(1000)])
-      // 'prezzo': new FormControl(this.film.prezzo, [Validators.required, this.numberValidator])
     });
   }
 
@@ -69,13 +69,14 @@ export class FilmAddComponent implements OnInit {
     if (this.film.id != 0)
       this.datiService.update(film).subscribe(res => {
         this.fatto.emit(true);
+        this.goToDashboard();
       }
       )
     else this.datiService.add(film).subscribe(res => {
       this.fatto.emit(true);
+      this.goToDashboard();
     })
 
-    this.goToDashboard();
   }
 
   annulla() {

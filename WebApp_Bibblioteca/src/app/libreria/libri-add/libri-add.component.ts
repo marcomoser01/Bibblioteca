@@ -34,7 +34,14 @@ export class LibriAddComponent implements OnInit {
   constructor(public datiService: LibriService, public fb: FormBuilder, private router: Router) {
     this.librofrm = fb.group(new Libro());
     if(datiService.libro.id != -1) {
-      this.libro = datiService.libro;
+      this.libro = {
+        id: datiService.libro.id,
+        titolo: datiService.libro.titolo,
+        autore: datiService.libro.autore,
+        prezzo: datiService.libro.prezzo,
+        prenotato: datiService.libro.prenotato
+      }
+      datiService.resetLibro();
     }
   }
 
@@ -56,7 +63,6 @@ export class LibriAddComponent implements OnInit {
       'titolo': new FormControl(this.libro.titolo, [Validators.required, Validators.minLength(4)]),
       'autore': new FormControl(this.libro.autore, [Validators.required]),
       'prezzo': new FormControl(this.libro.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(1000)])
-      // 'prezzo': new FormControl(this.libro.prezzo, [Validators.required, this.numberValidator])
     });
   }
 
@@ -64,19 +70,19 @@ export class LibriAddComponent implements OnInit {
     if (!libro.prenotato) {
       libro.prenotato = false;
     }
-
     if (this.libro.id != 0) {
       this.datiService.update(libro).subscribe(res => {
         this.fatto.emit(true);
+        this.goToDashboard();
       })
     }
     else {
       this.datiService.add(libro).subscribe(res => {
         this.fatto.emit(true);
+        this.goToDashboard();
       })
     }
 
-    this.goToDashboard();
   }
 
   annulla() {
@@ -89,8 +95,6 @@ export class LibriAddComponent implements OnInit {
     if (this.librofrm.get(element).errors) {
       Object.entries(this.librofrm.get(element).errors).forEach(
         ([errorName, errorValue]) => {
-
-
           err = listMsg[element + errorName];
         }
       );

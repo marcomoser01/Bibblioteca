@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class FilmDashboardComponent {
 
-  displayedColumns: string[] = ['id', 'titolo', 'autore', 'prezzo', 'bottoni'];
+  displayedColumns: string[] = ['id', 'titolo', 'autore', 'prezzo', 'durata', 'oscar', 'bottoni'];
 
   films$: Observable<Film[]> = new Observable<Film[]>();
   film?: Film = new Film();

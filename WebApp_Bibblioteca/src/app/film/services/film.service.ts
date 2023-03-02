@@ -12,6 +12,9 @@ export class FilmService {
   setFilm(film: Film) {
     this.film = film;
   }
+  resetFilm() {
+    this.film.id = -1;
+  }
 
   constructor(private http:HttpClient) { 
     this.film.id = -1;

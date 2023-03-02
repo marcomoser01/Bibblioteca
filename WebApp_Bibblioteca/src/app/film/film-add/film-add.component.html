@@ -3,7 +3,7 @@
     <mat-card class="example-card">
         <mat-card-header>
             <mat-card-title>Nuovo film</mat-card-title>
-            <mat-card-subtitle>Inserire titolo, autore e prezzo</mat-card-subtitle>
+            <mat-card-subtitle>Inserire titolo, autore, durata, numero oscar vinti e prezzo</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <input type="input" id="id" placeholder="id" formControlName="id" hidden />
@@ -11,8 +11,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Titolo</mat-label>
                     <input matInput id="titolo" placeholder="titolo" formControlName="titolo" />
-                    <mat-error *ngIf="filmfrm.controls['titolo'].invalid &&
-                    (filmfrm.controls['titolo'].dirty || filmfrm.controls['titolo'].touched) ">
+                    <mat-error *ngIf="filmfrm.controls['titolo'].invalid && (filmfrm.controls['titolo'].dirty || filmfrm.controls['titolo'].touched) ">
                         {{getErrorMessage_field('titolo')}}
                     </mat-error>
                 </mat-form-field>
@@ -21,12 +20,34 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Autore</mat-label>
                     <input matInput id="autore" placeholder="autore" formControlName="autore" />
-                    <mat-error *ngIf="filmfrm.controls['autore'].invalid &&
-                    (filmfrm.controls['autore'].dirty || filmfrm.controls['autore'].touched) ">
+                    <mat-error *ngIf="filmfrm.controls['autore'].invalid && (filmfrm.controls['autore'].dirty || filmfrm.controls['autore'].touched) ">
                         {{getErrorMessage_field('autore')}}
                     </mat-error>
                 </mat-form-field>
             </div>
+            
+
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Durata</mat-label>
+                    <input matInput id="durata" placeholder="durata" formControlName="durata" />
+                    <mat-error *ngIf="filmfrm.controls['durata'].invalid && (filmfrm.controls['durata'].dirty || filmfrm.controls['durata'].touched) ">
+                        {{getErrorMessage_field('durata')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Oscar</mat-label>
+                    <input matInput id="oscar" placeholder="oscar" formControlName="oscar" />
+                    <mat-error *ngIf="filmfrm.controls['oscar'].invalid && (filmfrm.controls['oscar'].dirty || filmfrm.controls['oscar'].touched) ">
+                        {{getErrorMessage_field('oscar')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+
+
             <div class="example-container">
                 <mat-form-field appearance="fill" floatLabel="always">
                     <mat-label>Prezzo</mat-label>

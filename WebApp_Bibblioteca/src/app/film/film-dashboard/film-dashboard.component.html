@@ -5,25 +5,32 @@
 
     <div class="table-wrapper">
       <table mat-table [dataSource]="films$ | async" class="mat-elevation-z8 demo-table">
-        <!-- Position Column -->
+        
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> ID </th>
           <td mat-cell *matCellDef="let film"> {{film.id}} </td>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="titolo">
           <th mat-header-cell *matHeaderCellDef>Titolo</th>
           <td mat-cell *matCellDef="let film">{{ film.titolo }}</td>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="autore">
           <th mat-header-cell *matHeaderCellDef>Autore</th>
           <td mat-cell *matCellDef="let film">{{ film.autore }}</td>
         </ng-container>
 
-        <!-- Symbol Column -->
+        <ng-container matColumnDef="durata">
+          <th mat-header-cell *matHeaderCellDef>Durata [min]</th>
+          <td mat-cell *matCellDef="let film">{{ film.durata }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="oscar">
+          <th mat-header-cell *matHeaderCellDef>N. Oscar</th>
+          <td mat-cell *matCellDef="let film">{{ film.oscar }}</td>
+        </ng-container>
+
         <ng-container matColumnDef="prezzo">
           <th mat-header-cell *matHeaderCellDef>Prezzo</th>
           <td mat-cell *matCellDef="let film">{{ film.prezzo }}</td>
@@ -36,10 +43,10 @@
             <div>
               <button mat-raised-button color="primary" (click)="prenota(film)" *ngIf="!film.prenotato">
                 Prenota
-            </button>
-            <button mat-raised-button color="warn" (click)="prenota(film)" *ngIf="film.prenotato">
+              </button>
+              <button mat-raised-button color="warn" (click)="prenota(film)" *ngIf="film.prenotato">
                 Annulla Prenotazione
-            </button>
+              </button>
             </div>
             <div>
               <button mat-raised-button color="basic" (click)="update(film)">
@@ -56,6 +63,7 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
       </table>
     </div>
 
