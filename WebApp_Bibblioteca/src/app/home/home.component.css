@@ -1,0 +1,5 @@
+.home_component {
+    display: flex;
+    height: 100%;
+    background-image: url('../../image/bibblioteca_wallpaper.jpeg');
+}

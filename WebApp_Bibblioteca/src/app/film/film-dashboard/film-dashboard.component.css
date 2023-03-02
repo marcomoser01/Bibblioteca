@@ -1,0 +1,60 @@
+.film_dashboard_container {
+    display: flex;
+    height: 100%;
+    background-image: url('../../../image/film_wallpaper.png');
+}
+
+.wrapper {
+    align-self: start;
+}
+
+.table-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 1px 2px 7px grey;
+}
+
+.demo-table {
+    box-shadow: none;
+    min-width: 800px;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+.mat-cell, .mat-header-cell {
+    padding-right: 1rem;
+}
+
+.mat-header-cell {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.mat-column-demo-position {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-demo-name {
+    padding-left: 16px;
+    font-size: 20px;
+}
+
+.mat-column-demo-weight {
+    font-style: italic;
+}
+
+.mat-column-demo-symbol {
+    width: 32px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.mat-column-demo-bot:not(.mat-header-cell) {
+
+    display: flex;
+    gap: 1rem;
+    padding-block: 1rem;
+}

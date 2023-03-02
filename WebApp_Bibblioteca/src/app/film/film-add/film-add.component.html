@@ -1,0 +1,51 @@
+<form [formGroup]="filmfrm" (ngSubmit)="onSubmit(filmfrm.value)">
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>Nuovo film</mat-card-title>
+            <mat-card-subtitle>Inserire titolo, autore e prezzo</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <input type="input" id="id" placeholder="id" formControlName="id" hidden />
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Titolo</mat-label>
+                    <input matInput id="titolo" placeholder="titolo" formControlName="titolo" />
+                    <mat-error *ngIf="filmfrm.controls['titolo'].invalid &&
+                    (filmfrm.controls['titolo'].dirty || filmfrm.controls['titolo'].touched) ">
+                        {{getErrorMessage_field('titolo')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Autore</mat-label>
+                    <input matInput id="autore" placeholder="autore" formControlName="autore" />
+                    <mat-error *ngIf="filmfrm.controls['autore'].invalid &&
+                    (filmfrm.controls['autore'].dirty || filmfrm.controls['autore'].touched) ">
+                        {{getErrorMessage_field('autore')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-container">
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Prezzo Copertina</mat-label>
+                    <input matInput type="text" class="example-right-align" id="prezzoCopertina" placeholder="0"
+                        formControlName="prezzoCopertina" />
+                    <span matTextPrefix>€&nbsp;</span>
+
+                    <mat-error *ngIf="filmfrm.controls['prezzoCopertina'].invalid &&
+                    (filmfrm.controls['prezzoCopertina'].dirty || filmfrm.controls['prezzoCopertina'].touched) ">
+                        {{getErrorMessage_field('prezzoCopertina')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!filmfrm.valid">Salva</button>
+            <button mat-raised-button color="basic" (click)="annulla()">Annulla</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
