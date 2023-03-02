@@ -1,0 +1,59 @@
+.home_component {
+  height: calc(100vh - 64px);
+  height: calc(100dvh - 64px);
+
+  display: flex;
+  flex-flow: column nowrap;
+  place-items: center;
+  place-content: center;
+
+  /* color: white; */
+
+  background-color: white;
+  /* background-image: url("../../image/biblioteca_wallpaper.jpeg"); */
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.warning {
+  font-style: italic;
+  margin-bottom: 4rem;
+}
+
+.advice {
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: appear 1s ease-in-out 3s forwards;
+  position: relative;
+}
+
+.advice::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+
+  bottom: -4px;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+  background-color: black;
+
+  transform-origin: center;
+  transform: scaleX(0);
+  animation: underline 2s ease-in-out 4s infinite;
+}
+
+@keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes underline {
+  50% {
+    transform: scaleX(1);
+  }
+}
