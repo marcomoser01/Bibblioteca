@@ -24,7 +24,7 @@
                 <ng-container matColumnDef="prezzo">
                     <th mat-header-cell *matHeaderCellDef>Prezzo</th>
                     <td mat-cell *matCellDef="let libro">
-                        {{ libro.prezzoCopertina }}
+                        {{ libro.prezzo }}
                     </td>
                 </ng-container>
 
@@ -33,8 +33,11 @@
 
                     <td mat-cell *matCellDef="let libro" class="btnInTableWrapper">
                         <div>
-                            <button mat-raised-button color="primary" (click)="prenota(libro)">
+                            <button mat-raised-button color="primary" (click)="prenota(libro)" *ngIf="!libro.prenotato">
                                 Prenota
+                            </button>
+                            <button mat-raised-button color="warn" (click)="prenota(libro)" *ngIf="libro.prenotato">
+                                Annulla Prenotazione
                             </button>
                         </div>
                         <div>

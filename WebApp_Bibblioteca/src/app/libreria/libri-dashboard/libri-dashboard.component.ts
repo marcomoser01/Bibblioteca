@@ -17,6 +17,7 @@ export class LibriDashboardComponent {
   libri$: Observable<Libro[]> = new Observable<Libro[]>();
   libro?: Libro = new Libro();
 
+
   constructor(public datiService: LibriService, private router: Router) {
     this.libri$ = this.datiService.getAll()
   }
