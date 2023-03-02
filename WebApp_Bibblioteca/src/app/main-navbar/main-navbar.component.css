@@ -1,15 +1,16 @@
 .abcd {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
 }
 
 .buttons {
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
 }
 
 mat-toolbar {
-    justify-content: space-between;
+  justify-content: space-between;
 }
