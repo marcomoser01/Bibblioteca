@@ -1,0 +1,2 @@
+- [ ] add graphics for libri-add/film-add
+- [ ] add graphics for libri dashboard

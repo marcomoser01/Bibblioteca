@@ -1,3 +1,4 @@
 .container_app {
-    height: inherit;
+  height: inherit;
+  background: grey;
 }
