@@ -12,9 +12,9 @@ const listMsg = {
   titolorequired: "Il titolo è richiesto.",
   titolominlength: "Il titolo deve deve avere almeno 4 caratteri",
   autorerequired: "Il campo autore è obbligatorio.",
-  prezzoCopertinarequired: "Il prezzo di copertina deve essere inserito > 0.",
-  prezzoCopertinamin: "Deve essere maggiore di 0",
-  prezzoCopertinanan: "Il prezzo deve essere un valore >0"
+  prezzorequired: "Il prezzo di  deve essere inserito > 0.",
+  prezzomin: "Deve essere maggiore di 0",
+  prezzonan: "Il prezzo deve essere un valore >0"
 };
 
 @Component({
@@ -33,6 +33,9 @@ export class LibriAddComponent implements OnInit {
 
   constructor(public datiService: LibriService, public fb: FormBuilder, private router: Router) {
     this.librofrm = fb.group(new Libro());
+    if(datiService.libro.id != -1) {
+      this.libro = datiService.libro;
+    }
   }
 
   numberValidator(control: FormControl) {
@@ -48,13 +51,12 @@ export class LibriAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.libro)
     this.librofrm = this.fb.group({
       id: [this.libro.id],
       'titolo': new FormControl(this.libro.titolo, [Validators.required, Validators.minLength(4)]),
       'autore': new FormControl(this.libro.autore, [Validators.required]),
-      'prezzoCopertina': new FormControl(this.libro.prezzoCopertina, [NumberValidatorsService.min(0), NumberValidatorsService.max(1000)])
-      // 'prezzoCopertina': new FormControl(this.libro.prezzoCopertina, [Validators.required, this.numberValidator])
+      'prezzo': new FormControl(this.libro.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(1000)])
+      // 'prezzo': new FormControl(this.libro.prezzo, [Validators.required, this.numberValidator])
     });
   }
 
@@ -88,7 +90,6 @@ export class LibriAddComponent implements OnInit {
       Object.entries(this.librofrm.get(element).errors).forEach(
         ([errorName, errorValue]) => {
 
-          console.log(element, errorValue, errorName)
 
           err = listMsg[element + errorName];
         }

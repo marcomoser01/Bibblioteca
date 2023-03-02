@@ -29,14 +29,14 @@
             </div>
             <div class="example-container">
                 <mat-form-field appearance="fill" floatLabel="always">
-                    <mat-label>Prezzo Copertina</mat-label>
-                    <input matInput type="text" class="example-right-align" id="prezzoCopertina" placeholder="0"
-                        formControlName="prezzoCopertina" />
+                    <mat-label>Prezzo</mat-label>
+                    <input matInput type="text" class="example-right-align" id="prezzo" placeholder="0"
+                        formControlName="prezzo" />
                     <span matTextPrefix>€&nbsp;</span>
 
-                    <mat-error *ngIf="filmfrm.controls['prezzoCopertina'].invalid &&
-                    (filmfrm.controls['prezzoCopertina'].dirty || filmfrm.controls['prezzoCopertina'].touched) ">
-                        {{getErrorMessage_field('prezzoCopertina')}}
+                    <mat-error *ngIf="filmfrm.controls['prezzo'].invalid &&
+                    (filmfrm.controls['prezzo'].dirty || filmfrm.controls['prezzo'].touched) ">
+                        {{getErrorMessage_field('prezzo')}}
                     </mat-error>
                 </mat-form-field>
             </div>

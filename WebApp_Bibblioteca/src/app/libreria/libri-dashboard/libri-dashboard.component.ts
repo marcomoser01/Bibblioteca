@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LibriService } from '../services/libri.service';
 import { Libro } from '../domains/libro';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-libri-dashboard',
@@ -14,39 +15,27 @@ export class LibriDashboardComponent {
   displayedColumns: string[] = ['id', 'titolo', 'autore', 'prezzo', 'bottoni'];
 
   libri$: Observable<Libro[]> = new Observable<Libro[]>();
-  isAdd: boolean = false;
   libro?: Libro = new Libro();
 
-  constructor(public datiService: LibriService) {
-    this.libri$ = this.datiService.getAll()
-    //this.libri$.forEach(res => {console.log(res)});
-  }
 
-  add() {
-    this.isAdd = !this.isAdd;
+  constructor(public datiService: LibriService, private router: Router) {
+    this.libri$ = this.datiService.getAll()
   }
 
   canc(id: number) {
+
     this.datiService.canc(id).subscribe(res => {
-
-      console.log(res);
       this.libri$ = this.datiService.getAll()
-
     });
-    // console.log("ho cancellato il libro")
+
   }
 
   update(libro: Libro) {
-    this.libro = libro;
-    this.add();
+    this.datiService.setLibro(libro);
+    this.router.navigate(['libreria/add']);
+    
   }
 
-  onFatto(fatto: boolean) {
-    this.add();
-    this.libro = new Libro();
-    if (fatto)
-      this.libri$ = this.datiService.getAll()
-  }
 
   prenota(libro: Libro) {
     libro.prenotato = !libro.prenotato;

@@ -1,5 +1,5 @@
 INSERT INTO
-  libri (titolo, autore, prezzo_di_copertina, prenotato)
+  libri (titolo, autore, prezzo, prenotato)
 VALUES
   ('Titolo 1', 'autore 5', 5, FALSE),
   ('Titolo 2', 'autore 4', 4, FALSE),
