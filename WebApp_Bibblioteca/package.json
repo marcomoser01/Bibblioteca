@@ -1,12 +1,13 @@
 {
-  "name": "crud-angular-material",
+  "name": "biblioteca-web-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev": "concurrently --kill-others \"java -jar Server/DB_Biblioteca.jar\" \"npm start\""
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,7 @@
     "@angular/cli": "~15.1.5",
     "@angular/compiler-cli": "^15.1.4",
     "@types/jasmine": "~4.3.1",
+    "concurrently": "^7.6.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.1",
     "karma-chrome-launcher": "~3.1.1",
