@@ -8,8 +8,16 @@ import { Film } from '../domains/film';
 export class FilmService {
 
   url : string =  "http://localhost:8099/api/film"
-  constructor(private http:HttpClient) { }
- // crud
+  film : Film = new Film();
+  setFilm(film: Film) {
+    this.film = film;
+  }
+
+  constructor(private http:HttpClient) { 
+    this.film.id = -1;
+  }
+  
+  // crud
   getAll(): Observable<Film[]>{
     return this.http.get<Film[]>(this.url);
   }

@@ -12,9 +12,9 @@ const listMsg = {
   titolorequired: "Il titolo è richiesto.",
   titolominlength: "Il titolo deve deve avere almeno 4 caratteri",
   autorerequired: "Il campo autore è obbligatorio.",
-  prezzoCopertinarequired: "Il prezzo di copertina deve essere inserito > 0.",
-  prezzoCopertinamin: "Deve essere maggiore di 0",
-  prezzoCopertinanan: "Il prezzo deve essere un valore >0"
+  prezzorequired: "Il prezzo di  deve essere inserito > 0.",
+  prezzomin: "Deve essere maggiore di 0",
+  prezzonan: "Il prezzo deve essere un valore >0"
 };
 
 @Component({
@@ -33,6 +33,9 @@ export class FilmAddComponent implements OnInit {
 
   constructor(public datiService: FilmService, public fb: FormBuilder, private router: Router) {
     this.filmfrm = fb.group(new Film());
+    if(datiService.film.id != -1) {
+      this.film = datiService.film;
+    }
   }
 
   numberValidator(control: FormControl) {
@@ -48,13 +51,12 @@ export class FilmAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.film)
     this.filmfrm = this.fb.group({
       id: [this.film.id],
       'titolo': new FormControl(this.film.titolo, [Validators.required, Validators.minLength(4)]),
       'autore': new FormControl(this.film.autore, [Validators.required]),
-      'prezzoCopertina': new FormControl(this.film.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(1000)])
-      // 'prezzoCopertina': new FormControl(this.film.prezzoCopertina, [Validators.required, this.numberValidator])
+      'prezzo': new FormControl(this.film.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(1000)])
+      // 'prezzo': new FormControl(this.film.prezzo, [Validators.required, this.numberValidator])
     });
   }
 
@@ -87,7 +89,6 @@ export class FilmAddComponent implements OnInit {
       Object.entries(this.filmfrm.get(element).errors).forEach(
         ([errorName, errorValue]) => {
 
-          console.log(element, errorValue, errorName)
 
           err = listMsg[element + errorName];
         }

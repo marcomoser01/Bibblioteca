@@ -8,8 +8,16 @@ import { Libro } from '../domains/libro';
 export class LibriService {
 
   url : string =  "http://localhost:8099/api/libri"
-  constructor(private http:HttpClient) { }
- // crud
+  libro : Libro = new Libro();
+  setLibro(libro: Libro) {
+    this.libro = libro;
+  }
+
+  constructor(private http:HttpClient) {
+    this.libro.id = -1;
+  }
+  
+  // crud
   getAll(): Observable<Libro[]>{
     return this.http.get<Libro[]>(this.url);
   }
@@ -24,5 +32,6 @@ export class LibriService {
   update(libro:Libro){
     return this.http.put(this.url,libro);
   }
+
 
 }

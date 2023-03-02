@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
   constructor(datiService: NavbarService) {
     if(datiService.appComponentReload) {
       window.location.reload();
     }
   }
+  
 }

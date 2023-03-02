@@ -1,58 +1,57 @@
 <div class="libreria_dashboard_container">
-    <app-libri-add *ngIf="isAdd ; else buttonAdd" [libro]="libro!" (fatto)="onFatto($event)"></app-libri-add>
-    
-    
-    <ng-template #buttonAdd>
-        <div class="wrapper">
-    
-            <div class="table-wrapper">
-                <table mat-table [dataSource]="libri$ | async" class="mat-elevation-z8 demo-table">
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef> ID </th>
-                        <td mat-cell *matCellDef="let libro"> {{libro.id}} </td>
-                    </ng-container>
-    
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="titolo">
-                        <th mat-header-cell *matHeaderCellDef> Titolo </th>
-                        <td mat-cell *matCellDef="let libro"> {{libro.titolo}} </td>
-                    </ng-container>
-    
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="autore">
-                        <th mat-header-cell *matHeaderCellDef> Autore </th>
-                        <td mat-cell *matCellDef="let libro"> {{libro.autore}} </td>
-                    </ng-container>
-    
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="prezzo">
-                        <th mat-header-cell *matHeaderCellDef> Prezzo </th>
-                        <td mat-cell *matCellDef="let libro"> {{libro.prezzoCopertina}} </td>
-                    </ng-container>
-    
-                    <ng-container matColumnDef="bottoni">
-                        <th mat-header-cell *matHeaderCellDef> Update/Canc/Prenota </th>
-    
-                        <td mat-cell *matCellDef="let libro">
-                            <div>
-                                <button mat-raised-button color="basic" (click)="update(libro)">Update</button>
-    
-                            </div>
-                            <div>
-                                <button mat-raised-button color="warn" (click)="canc(libro.id)">Canc</button>
-    
-                            </div>
-                            <div>
-                                <button mat-raised-button color="primary" (click)="prenota(libro)">Prenota</button>
-                            </div>
-                        </td>
-                        </ng-container>
-    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-            </div>
+
+    <div class="wrapper">
+
+        <div class="table-wrapper">
+            <table mat-table [dataSource]="libri$ | async" class="mat-elevation-z8 demo-table">
+                
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                    <td mat-cell *matCellDef="let libro"> {{libro.id}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="titolo">
+                    <th mat-header-cell *matHeaderCellDef> Titolo </th>
+                    <td mat-cell *matCellDef="let libro"> {{libro.titolo}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="autore">
+                    <th mat-header-cell *matHeaderCellDef> Autore </th>
+                    <td mat-cell *matCellDef="let libro"> {{libro.autore}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="prezzo">
+                    <th mat-header-cell *matHeaderCellDef> Prezzo </th>
+                    <td mat-cell *matCellDef="let libro"> {{libro.prezzo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="bottoni">
+                    <th mat-header-cell *matHeaderCellDef> Update/Canc/Prenota </th>
+
+                    <td mat-cell *matCellDef="let libro">
+                        <div>
+                            <button mat-raised-button color="basic" (click)="update(libro)">Update</button>
+
+                        </div>
+                        <div>
+                            <button mat-raised-button color="warn" (click)="canc(libro.id)">Canc</button>
+
+                        </div>
+                        <div>
+                            <button mat-raised-button color="primary" (click)="prenota(libro)">Prenota</button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
         </div>
-    </ng-template>
+        
+    </div>
+
 </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FilmService } from '../services/film.service';
 import { Film } from '../domains/film';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-film-dashboard',
@@ -14,37 +15,24 @@ export class FilmDashboardComponent {
   displayedColumns: string[] = ['id', 'titolo', 'autore', 'prezzo', 'bottoni'];
 
   films$: Observable<Film[]> = new Observable<Film[]>();
-  isAdd: boolean = false;
   film?: Film = new Film();
 
-  constructor(public datiService: FilmService) {
+  constructor(public datiService: FilmService, private router: Router) {
     this.films$ = this.datiService.getAll()
   }
 
-  add() {
-    this.isAdd = !this.isAdd;
-  }
 
   canc(id: number) {
     this.datiService.canc(id).subscribe(res => {
 
-      console.log(res);
       this.films$ = this.datiService.getAll()
 
     });
-    // console.log("ho cancellato il Film")
   }
 
-  update(Film: Film) {
-    this.film = Film;
-    this.add();
-  }
-
-  onFatto(fatto: boolean) {
-    this.add();
-    this.film = new Film();
-    if (fatto)
-      this.films$ = this.datiService.getAll()
+  update(film: Film) {
+    this.datiService.setFilm(film);
+    this.router.navigate(['film/add']);
   }
 
   prenota(film: Film) {

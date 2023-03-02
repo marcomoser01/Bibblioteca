@@ -28,8 +28,8 @@ public class Libro {
     @Column(name = "autore")
     String autore;
 
-    @Column(name = "prezzo_di_copertina", precision = 19, scale = 4)
-    BigDecimal prezzoCopertina;
+    @Column(name = "prezzo", precision = 19, scale = 4)
+    BigDecimal prezzo;
 
     @Column(name = "prenotato", nullable = false)
     Boolean prenotato;

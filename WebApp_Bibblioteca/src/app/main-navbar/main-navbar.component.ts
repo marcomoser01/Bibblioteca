@@ -22,7 +22,6 @@ export class MainNavbarComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, public navbarService: NavbarService) {
     
-    console.log('sa sa prova from nav-bar');
     this.navbarService.get("main").subscribe(res => {
       this.mainBar = res;
     })
