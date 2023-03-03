@@ -1,26 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 app-root {
-    height: 100vh;
-    height: 100dvh;
-    display: block;
+  height: 100vh;
+  height: 100dvh;
+  display: block;
 
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
+.mat-drawer-backdrop {
+  position: fixed !important;
+}
+
+@media (max-width: 599px) {
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    height: 64px !important;
+  }
 }
