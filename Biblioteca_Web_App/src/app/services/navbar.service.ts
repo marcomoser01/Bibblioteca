@@ -10,6 +10,7 @@ export class NavbarService {
   $mainNav: Subject<boolean> = new Subject();
   $libreriaNav: Subject<boolean> = new Subject();  
   $filmNav: Subject<boolean> = new Subject();
+  $loginNav: Subject<boolean> = new Subject();
   appComponentReload: boolean = false;
 
 
@@ -17,6 +18,7 @@ export class NavbarService {
     this.$mainNav.next(true);
     this.$libreriaNav.next(false);
     this.$filmNav.next(false);
+    this.$loginNav.next(false);
   }
 
   get(bar: string) {
@@ -31,6 +33,10 @@ export class NavbarService {
       }
       case "film": {
         return this.$filmNav;
+        break
+      }
+      case "login": {
+        return this.$loginNav;
         break
       }
 
@@ -52,6 +58,10 @@ export class NavbarService {
         return this.$filmNav.next(valore);
         break
       }
+      case "login": {
+        return this.$loginNav.next(valore);
+        break
+      }
     }
   }
 
@@ -65,6 +75,10 @@ export class NavbarService {
   
   getFilmNav() {
     return this.$filmNav;
+  }
+
+  getLoginNav() {
+    return this.$loginNav;
   }
 
   checkNavbarServiceValue(caller: String) {
@@ -84,6 +98,12 @@ export class NavbarService {
     if(caller != 'film') {
       if(this.$mainNav.observed) {
         this.$filmNav.next(false);
+      }
+    }
+
+    if(caller != 'login') {
+      if(this.$loginNav.observed) {
+        this.$loginNav.next(false);
       }
     }
 

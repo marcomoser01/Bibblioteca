@@ -15,12 +15,15 @@ const routes: Routes = [
     },
     {
         path: 'libreria',
-        loadChildren: () =>
-            import('./modules/libreria/libreria.module').then((m) => m.LibreriaModule),
+        loadChildren: () => import('./modules/libreria/libreria.module').then((m) => m.LibreriaModule),
     },
     {
         path: 'film',
         loadChildren: () => import('./modules/film/film.module').then((m) => m.FilmModule),
+    },
+    {
+        path: 'login',
+        loadChildren: () => import('./modules/login/login.module').then((m) => m.LoginModule),
     },
     {
         path: '**',
