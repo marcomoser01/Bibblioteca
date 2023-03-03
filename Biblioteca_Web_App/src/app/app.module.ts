@@ -13,7 +13,12 @@ import { Error404Component } from './components/Error/error404/error404.componen
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, MainNavbarComponent, Error404Component, HomeComponent],
+  declarations: [
+    AppComponent, 
+    MainNavbarComponent, 
+    Error404Component, 
+    HomeComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
