@@ -1,7 +1,12 @@
+### application.properties ###
+**/application.properties
 application.properties
+<<<<<<< HEAD
 /**/application.properties
 ignoreme.html 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+=======
+>>>>>>> f5c931712d14a31f2c1b6a66a887e13939bfbe83
 
 # Compiled output
 /dist

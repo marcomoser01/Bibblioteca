@@ -56,7 +56,7 @@ export class FilmAddComponent implements OnInit {
       'autore': new FormControl(this.film.autore, [Validators.required]),
       'durata': new FormControl(this.film.durata, [Validators.required]),
       'oscar': new FormControl(this.film.oscar, [Validators.required]),
-      'prezzo': new FormControl(this.film.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(1000)])
+      'prezzo': new FormControl(this.film.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(10000)])
     });
   }
 
