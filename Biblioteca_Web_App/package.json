@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "server": "java -jar Server/DB_Biblioteca.jar",
-    "start": "concurrently --kill-others \"npm run server\" \"ng serve\"",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "server": "java -jar Server/DB_Biblioteca.jar",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm start\""
   },
   "private": true,
   "dependencies": {
