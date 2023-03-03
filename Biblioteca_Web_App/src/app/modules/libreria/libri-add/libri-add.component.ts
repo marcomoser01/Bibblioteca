@@ -62,7 +62,7 @@ export class LibriAddComponent implements OnInit {
       id: [this.libro.id],
       'titolo': new FormControl(this.libro.titolo, [Validators.required, Validators.minLength(4)]),
       'autore': new FormControl(this.libro.autore, [Validators.required]),
-      'prezzo': new FormControl(this.libro.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(1000)])
+      'prezzo': new FormControl(this.libro.prezzo, [NumberValidatorsService.min(0), NumberValidatorsService.max(100000)])
     });
   }
 
